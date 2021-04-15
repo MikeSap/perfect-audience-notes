@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#index'
+  root 'users#index'
 
   resources :notes
   resources :users
