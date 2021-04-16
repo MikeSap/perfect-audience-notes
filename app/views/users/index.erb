@@ -5,3 +5,12 @@
    <%= flash[:alert] %>
    </div>
 <% end %>
+
+<div class="note-container">
+ <% @notes.each do |note| %>
+    <div class="note">
+      <h1> Note #<%= note.title %></h1>
+      <%= note.content %>
+    <div>
+ <% end %>
+</div>
