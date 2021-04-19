@@ -1,6 +1,6 @@
 require 'faker'
 
-mike =  User.create(username:"mike", password: "123", password_confirmation: "123")
+mike =  User.create(name:"mike", email:"mike@mike.com", password: "123", password_confirmation: "123")
 
 note1 = Note.create(title: "1", content: "123", user: mike)
 note2 = Note.create(title: "2", content: "456", user: mike)

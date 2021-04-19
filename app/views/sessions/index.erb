@@ -1,4 +1,6 @@
-<h1 >Welcome to Perfect Audience Notes, <%=@current_user.username%>.</h1>
+<div class="d-flex justify-content-center">
+<h1>Welcome to Perfect Audience Notes, <%=@current_user.name%>.</h1>
+</div>
 
 <% if !flash[:alert].nil? %> 
    <div class= "alert alert-danger">
@@ -10,11 +12,16 @@
   <% @notes.each_slice(3) do |chunk| %>
     <div class="row justify-content-center gx-2 gy-2 ">
       <% chunk.each do |note| %>
-        <div class="col-sm-6 col-lg-4">
-          <h2> Note #<%= note.title %></h2>
-          <%= note.content %>
-          <%= link_to 'Edit', edit_note_path(note) %>
-          <%= link_to 'Delete', note_path(note), data: { confirm: 'Are you sure?' }, method: :delete %>
+        <div class="card col-sm-6 col-lg-4">
+          <h2 class="card-title text-center"><%= note.title %></h2>
+          <p class="card-text"> <%= note.content %> </p>
+          <div class="card-body text-center">
+            <%= link_to 'Edit', edit_note_path(note) %>
+            <%= link_to 'Delete', note_path(note), data: { confirm: 'Are you sure?' }, method: :delete %>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last Edited:<%=note.updated_at%> </small>
+          </div>
         </div>
       <% end %>
     </div>

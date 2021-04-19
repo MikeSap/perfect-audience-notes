@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:user][:username])
+    @user = User.find_by(email: params[:user][:email])
     if @user ==  nil
         flash[:alert] = ("You have entered an incorrect Username")
         return redirect_to '/login'   

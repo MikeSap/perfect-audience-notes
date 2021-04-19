@@ -1,18 +1,18 @@
 <div class="d-flex justify-content-center">
-  <h1>Welcome to Perfect Audience Notes<% if @current_user.id != nil %><%= ", #{@current_user.username}"%><% end %>.</h1>
+  <h1>Welcome to Perfect Audience Notes<% if @current_user.id != nil %><%= ", #{@current_user.name}"%><% end %>.</h1>
 </div>
 
-  <% if !flash[:alert].nil? %> 
+<% if !flash[:alert].nil? %> 
   <div class= "d-flex justify-content-center alert alert-danger">
     <%= flash[:alert] %>
    </div>
-  <% end %>
+<% end %>
 
 <div class="d-flex justify-content-center text-center">
   <%= form_for :user do |f| %>
 
-  <%=f.label :username%><br>
-  <%=f.text_field :username %><br>
+  <%=f.label :email%><br>
+  <%=f.email_field :email %><br>
 
   <%=f.label :password%><br>
   <%=f.password_field :password%><br>
@@ -20,7 +20,8 @@
   <br>
   <%=f.submit "Log In"%>
   <%end%>
+</div>
 
-<a href="/users/new"> <button class="signup" type="button">Sign Up</button> </a>
-
+<div class="d-flex justify-content-center">
+  <a href="/users/new" style="padding:1em"> <button class="signup" type="button">Sign Up</button> </a>
 </div>

@@ -12,8 +12,17 @@ end
 
 def create
   @note =  Note.new(note_params.merge(user: @current_user))
-  return render :new unless @note.save
-  redirect_to root_path
+  if @note.title.empty?
+    @note.title = @note.content[0..29]
+  end
+  if @note.valid?
+    @note.save
+    flash[:alert] = nil
+    return redirect_to root_path
+  else
+    flash[:alert] = @note.errors.full_messages[0]
+    render :new
+  end 
 end
 
 def edit
@@ -22,8 +31,21 @@ end
 
 def update
   @note = Note.find(params[:id])
-  @note.update(note_params)
-  redirect_to root_path
+  if note_params["title"].empty?
+    @note.title = note_params["content"][0..29]
+    @note.content = note_params["content"]
+    return redirect_to root_path if @note.save
+  end
+    @note.title = note_params["title"]
+    @note.content = note_params["content"]
+  if @note.valid?
+    @note.save
+    flash[:alert] = nil
+    return redirect_to root_path
+  else
+    flash[:alert] = @note.errors.full_messages[0]
+    render :new
+  end
 end
 
 def destroy
