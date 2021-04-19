@@ -14,31 +14,37 @@
   </head>
 
   <body class="<%= cookies[:theme] %>">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+       <% if cookies[:theme] == "light" %>
+          <a class="navbar-brand" href="/"><img src=<%= image_url('perfectaudience_logo.png')%>></a>
+        <% else %>
+          <a class="navbar-brand" href="/"><img src=<%= image_url('perfectaudience_logo_invert.png')%>></a>
+        <% end %>  
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="/">Perfect Audience Notes</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <% if @current_user.id != nil %>
+              <ul class="navbar-nav w-100 justify-content-end ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/notes/new">New Note</a>
+                </li> 
+                <% if cookies[:theme] == "light" %>
+                  <li class="nav-item"> <%= link_to image_tag('moon.png'), root_path(theme: "dark"), class: "nav-link" %> </li>
+                <% else %>
+                  <li class="nav-item"> <%= link_to image_tag('sun.png'), root_path(theme: "light"), class: "nav-link"%> </li>
+                <% end %>  
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <% if @current_user.id != nil %> 
-            <ul class="navbar-nav">
-              <% if cookies[:theme] == "light" %>
-                <li class="nav-item"> <%= link_to "go dark", root_path(theme: "dark"), class: "nav-link" %> </li>
-              <% else %>
-                <li class="nav-item"> <%= link_to "go light", root_path(theme: "light"), class: "nav-link"%> </li>
-              <% end %>  
-              <li class="nav-item">
-                <a class="nav-link" href="/notes/new">New Note</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
-              </li>      
-            </ul>
-          <% end %>
-      </div>
-    </nav>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+                </li>      
+              </ul>
+            <% end %>
+        </div>
+      </nav>
+    </div>
     
     <%= yield %>
    
