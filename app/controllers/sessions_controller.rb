@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:login, :create]
   
   def index  
-    @notes = @current_user.notes
+    @notes = @current_user.notes.order('created_at DESC')
   end    
 
   def login
