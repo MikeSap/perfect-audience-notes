@@ -13,13 +13,13 @@
 
   </head>
 
-  <body class="<%= cookies[:theme] %>">
+  <body class="<%= cookies[:theme] || "light" %>">
     <div class="container">
       <nav class="navbar navbar-expand-lg">
-       <% if cookies[:theme] == "light" %>
-          <a class="navbar-brand" href="/"><img src=<%= image_url('perfectaudience_logo.png')%>></a>
-        <% else %>
+       <% if cookies[:theme] == "dark" %>
           <a class="navbar-brand" href="/"><img src=<%= image_url('perfectaudience_logo_invert.png')%>></a>
+        <% else %>
+          <a class="navbar-brand" href="/"><img src=<%= image_url('perfectaudience_logo.png')%>></a>
         <% end %>  
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -31,10 +31,10 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/notes/new">New Note</a>
                 </li> 
-                <% if cookies[:theme] == "light" %>
-                  <li class="nav-item"> <%= link_to image_tag('moon.png'), root_path(theme: "dark"), class: "nav-link" %> </li>
+                <% if cookies[:theme] == "dark" %>
+                  <li class="nav-item"> <%= link_to image_tag('sun.png'), root_path(theme: "light"), class: "nav-link" %> </li>
                 <% else %>
-                  <li class="nav-item"> <%= link_to image_tag('sun.png'), root_path(theme: "light"), class: "nav-link"%> </li>
+                  <li class="nav-item"> <%= link_to image_tag('moon.png'), root_path(theme: "dark"), class: "nav-link"%> </li>
                 <% end %>  
 
                 <li class="nav-item">

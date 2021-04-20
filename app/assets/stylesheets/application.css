@@ -10,6 +10,12 @@
 
 /* Index */
 
+.container.notes {
+  margin-top: 5vh;
+  max-height: 65vh;
+  overflow: auto;
+}
+
 .card {
   margin: 1.25em;
 }
@@ -36,6 +42,9 @@ body.light .card {
 }
 body.light a {
   color: rgb(61, 92, 104);
+}
+body.light .card-footer {
+  color: rgb(0, 183, 255);
 }
 
 /* Dark Mode */
