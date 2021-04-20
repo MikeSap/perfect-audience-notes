@@ -40,11 +40,9 @@ body.light .card {
   color: black;
   background-color: transparent;
 }
+
 body.light a {
   color: rgb(61, 92, 104);
-}
-body.light .card-footer {
-  color: rgb(0, 183, 255);
 }
 
 /* Dark Mode */
