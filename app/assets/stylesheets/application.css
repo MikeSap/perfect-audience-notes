@@ -1,3 +1,5 @@
+/* Nav */
+
 .navbar-brand img {
   height: 1.5em;
 }
@@ -5,6 +7,8 @@
 .nav-item img {
   height: 2em;
 }
+
+/* Index */
 
 .card {
   margin: 1.25em;
