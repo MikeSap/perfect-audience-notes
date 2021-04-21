@@ -8,9 +8,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    return  render :new unless @user.save
-    session[:user_id] = @user.id
-    redirect_to root_path
+    if @user.valid?
+      @user.save
+      flash[:alert] = nil
+      session[:user_id] = @user.id
+      return redirect_to root_path
+    else
+      flash[:alert] = @user.errors.full_messages[0]
+      render :new
+   end
   end
 
   private
