@@ -10,10 +10,13 @@
 
 /* Index */
 
-.container.notes {
+.flex-container.notes {
   margin-top: 5vh;
+  margin: auto;
+  max-width: 85vw;
   max-height: 65vh;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .card {
