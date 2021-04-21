@@ -66,14 +66,13 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address: 'smtp.mandrillapp.com',
-  port: 587,
-  enable_starttls_auto: true,
-  user_name: ENV['MANDRILL_USERNAME'],
-  password: ENV['MANDRILL_API_KEY'],
-  authentication: 'login',
-  domain: ENV['DOMAIN_NAME']
-}
+    port: 587,
+    address: 'smtp.gmail.com',
+    user_name: ENV['user_name'],
+    password: ENV['password'],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
