@@ -18,6 +18,7 @@
           <div class="card-body text-center">
             <%= link_to 'Edit', edit_note_path(note) %>
             <%= link_to 'Delete', note_path(note), data: { confirm: 'Are you sure?' }, method: :delete %>
+            <a href="/send_note/<%=note.id%>">Send Note</a>
           </div>
           <div class="card-footer">
             <small class="text-muted">Last Edited:<%=note.updated_at%> </small>

@@ -1,17 +1,23 @@
-<h1> New Note </h1>
+<div class="d-flex justify-content-center text-center">
+  <h1> New Note </h1>
+</div>
 
-<% if !flash[:alert].nil? %> 
-   <div class= "alert alert-danger">
-   <%= flash[:alert] %>
-   </div>
-<% end %>
+<div class="d-flex justify-content-center text-center">
+  <% if !flash[:alert].nil? %> 
+    <div class= "alert alert-danger">
+    <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div>
 
-<%= form_for @note do |f| %>
-    <%=f.label :title %><br>
-    <%=f.text_field :title %><br>
+<div class="d-flex justify-content-center text-center">
+  <%= form_for @note do |f| %>
+      <%=f.label :title %><br>
+      <%=f.text_field :title %><br>
 
-    <%=f.label :content %><br>
-    <%=f.text_field :content %><br>
+      <%=f.label :content %><br>
+      <%=f.text_area :content %><br>
 
-    <%=f.submit "Submit"%>
-<% end %>
+      <%=f.submit "Submit"%>
+  <% end %>
+</div>

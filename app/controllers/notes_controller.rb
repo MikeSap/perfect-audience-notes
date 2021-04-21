@@ -53,6 +53,12 @@ def destroy
   redirect_to root_path
 end
 
+def send_note
+  @note = Note.find(params[:id])
+  NotesMailer.with(note: @note).note_email.deliver_later
+  redirect_to root_path
+end
+
 private
 
 def note_params

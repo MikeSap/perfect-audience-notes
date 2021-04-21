@@ -8,4 +8,3 @@ note3 = Note.create(title: "3", content: "789", user: mike)
 note4 = Note.create(title: "4", content: "10", user: mike)
 note5 = Note.create(title: "5", content: "11", user: mike)
 note6 = Note.create(title: "6", content: "12", user: mike)
-
