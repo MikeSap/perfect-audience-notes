@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  scope :ci_find, lambda { |attribute, value| where("lower(#{attribute}) = ?", value.downcase).first }
+
 end
