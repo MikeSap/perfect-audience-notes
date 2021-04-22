@@ -65,6 +65,25 @@ def send_note
   redirect_to root_path
 end
 
+# def search
+#   case params["search-option"]
+#   when "title"
+#   @notes = @current_user.notes.where(title: params["search-terms"]).order('created_at DESC')
+#   return render root_path
+#   when "content"
+#   @notes = @current_user.notes.where(content: params["search-terms"]).order('created_at DESC')
+#   return render root_path
+#   else
+#   @notes = @current_user.notes.where(title: params["search-terms"]).or(@current_user.notes.where(content: params["search-terms"])).order('created_at DESC')
+#   return render root_path
+#   end
+# end
+
+def clear_search
+  @notes = @current_user.notes.order('created_at DESC')
+  redirect_to root_path
+end
+
 private
 
 def note_params

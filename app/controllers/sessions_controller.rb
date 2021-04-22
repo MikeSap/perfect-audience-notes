@@ -2,7 +2,14 @@ class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:login, :create]
   
   def index  
-    @notes = @current_user.notes.order('created_at DESC')
+    case params["search-option"]
+    when "title"
+    @notes = @current_user.notes.where("title like ?", "%#{params["search-terms"]}%").order('created_at DESC')
+    when "content"
+    @notes = @current_user.notes.where("content like ?", "%#{params["search-terms"]}%").order('created_at DESC') 
+    else   
+    @notes = @current_user.notes.order('created_at DESC') 
+    end    
   end    
 
   def login

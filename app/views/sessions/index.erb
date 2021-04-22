@@ -2,11 +2,27 @@
 <h1>Welcome to Perfect Audience Notes, <%=@current_user.name%>.</h1>
 </div>
 
-<% if !flash[:alert].nil? %> 
-   <div class= "alert alert-danger">
-   <%= flash[:alert] %>
-   </div>
-<% end %>
+<div class="d-flex justify-content-center">
+  <form action="/" method="get">
+
+    <input type="text" class="form-control-inline" name="search-terms" id="search-terms">
+    <label for="search-terms">Search:</label>
+
+    <div class= "form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="search-option" id="title" value="title" checked>
+      <label class="form-check-label" for="title">Title</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="search-option" id="content" value="content">
+      <label class="form-check-label" for="content">Content</label>
+    </div>
+    <button type="submit" >Submit</button>
+  </form>
+
+  <form action="/clear-search" method="get">
+      <button style="margin-left: 1em" type="submit">Clear Search</button>
+  </form>
+</div>
 
 <div class="flex-container notes">
   <% @notes.each_slice(3) do |chunk| %>
